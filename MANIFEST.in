@@ -1,0 +1,2 @@
+recursive-include tutorstepwise_config/patches *
+recursive-include tutorstepwise_config/templates *
