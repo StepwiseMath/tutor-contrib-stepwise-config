@@ -1,0 +1,14 @@
+
+# Create a Stepwise API configuration
+./manage.py lms configure_stepwise_api --environment 'Production' --host 'https://stepwiseai04.querium.com/webMathematica/api/'
+
+# Create a default marketing site for english
+./manage.py lms configure_stepwise_marketing_site --language 'en' --site_url 'https://stepwisemath.ai/'
+
+# Create locale html elements tags for the default marketing
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-about' --language 'en' --url 'https://stepwisemath.ai/about-stepwise/' --value 'About'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-blog' --language 'en' --url 'https://stepwisemath.ai/blog/' --value 'Blog'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-contact' --language 'en' --url 'https://stepwisemath.ai/contact/' --value 'Contact'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-tos' --language 'en' --url 'https://stepwisemath.ai/tos/' --value 'Terms of Service'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-privacy' --language 'en' --url 'https://stepwisemath.ai/privacy-policy/' --value 'Privacy Policy'
+

@@ -25,11 +25,10 @@ config = {
 }
 
 ################# Initialization tasks
-# To run the script from templates/stepwise_config/tasks/myservice/init, add:
-# hooks.Filters.COMMANDS_INIT.add_item((
-#     "myservice",
-#     ("stepwise_config", "tasks", "myservice", "init"),
-# ))
+hooks.Filters.COMMANDS_INIT.add_item((
+     "lms",
+     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration"),
+))
 
 ################# Docker image management
 # To build an image with `tutor images build myimage`, add a Dockerfile to templates/stepwise_config/build/myimage and write:
