@@ -1,0 +1,11 @@
+
+# Create a default marketing site for english
+./manage.py lms configure_stepwise_marketing_site --language 'es-419' --site_url 'https://mx.stepwisemath.ai/'
+
+# Create locale html elements tags for the default marketing
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-about' --language 'es-419' --url 'https://mx.stepwisemath.ai/about-stepwise/' --value 'Nosotros'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-blog' --language 'es-419' --url 'https://mx.stepwisemath.ai/blog/' --value 'Blog'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-contact' --language 'es-419' --url 'https://mx.stepwisemath.ai/contact/' --value 'Contacto'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-tos' --language 'es-419' --url 'https://mx.stepwisemath.ai/tos/' --value 'Términos de servicio'
+./manage.py lms configure_stepwise_locale --element_id 'stepwise-locale-privacy' --language 'es-419' --url 'https://mx.stepwisemath.ai/privacy-policy/' --value 'Política de privacidad'
+

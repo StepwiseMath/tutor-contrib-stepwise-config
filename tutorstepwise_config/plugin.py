@@ -27,7 +27,11 @@ config = {
 ################# Initialization tasks
 hooks.Filters.COMMANDS_INIT.add_item((
      "lms",
-     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration"),
+     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_en"),
+))
+hooks.Filters.COMMANDS_INIT.add_item((
+     "lms",
+     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_mx"),
 ))
 
 ################# Docker image management
