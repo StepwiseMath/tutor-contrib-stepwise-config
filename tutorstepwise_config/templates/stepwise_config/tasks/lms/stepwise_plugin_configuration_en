@@ -1,6 +1,6 @@
 
 # Create a Stepwise API configuration
-./manage.py lms configure_stepwise_api --environment 'Production' --host 'https://stepwiseai04.querium.com/webMathematica/api/'
+./manage.py lms configure_stepwise_api --environment 'prod' --host 'https://stepwiseai04.querium.com/webMathematica/api/'
 
 # Create a default marketing site for english
 ./manage.py lms configure_stepwise_marketing_site --language 'en' --site_url 'https://stepwisemath.ai/'
