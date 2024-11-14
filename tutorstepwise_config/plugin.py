@@ -12,6 +12,7 @@ config = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
+        "STEPWISEMATH_ENV": "prod",
     },
     # Add here settings that don't have a reasonable default for all users. For
     # instance: passwords, secret keys, etc.
@@ -23,6 +24,24 @@ config = {
         # "PLATFORM_NAME": "My platform",
     },
 }
+
+hooks.Filters.ENV_PATCHES.add_items(
+    [
+        # STEPWISEMATH_ENV is consumed by 
+        #  - the openedx LMS/CMS/Workder docker image, to determine the environment in which the image is running.
+        #    (implemented below)
+        #
+        #  - the openedx MFE component @stepwisemath/frontend-component-header,
+        #    to determine the AWS S3 bucket from which to serve custom css at run time.
+        #    see https://github.com/StepwiseMath/frontend-component-header/blob/open-release/redwood.master/src/learning-header/LearningHeader.jsx#L44
+        #    (implemented in https://github.com/StepwiseMath/tutor-indigo-stepwisemath)
+        (
+            "openedx-dockerfile-post-python-requirements",
+            """
+ENV STEPWISEMATH_ENV='{{ STEPWISEMATH_ENV }}'
+""",
+        ),
+    ])
 
 ################# Initialization tasks
 hooks.Filters.COMMANDS_INIT.add_item((
