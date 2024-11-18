@@ -99,7 +99,7 @@ hooks.Filters.ENV_PATCHES.add_items(
         (
             "openedx-dockerfile-post-python-requirements",
             """
-ENV STEPWISEMATH_ENV='{{ STEPWISEMATH_ENV }}'
+ENV STEPWISEMATH_ENV='{{ STEPWISE_CONFIG_STEPWISEMATH_ENV }}'
 """,
         ),
     ])
