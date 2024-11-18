@@ -99,7 +99,7 @@ hooks.Filters.ENV_PATCHES.add_items(
         (
             "openedx-dockerfile-minimal",
             """
-ENV STEPWISEMATH_ENV='{{ STEPWISE_CONFIG_STEPWISEMATH_ENV }}'
+ENV STEPWISEMATH_ENV={{ STEPWISE_CONFIG_STEPWISEMATH_ENV }}
 """,
         ),
     ])
