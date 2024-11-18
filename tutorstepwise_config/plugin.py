@@ -25,33 +25,6 @@ config = {
     },
 }
 
-hooks.Filters.ENV_PATCHES.add_items(
-    [
-        # STEPWISEMATH_ENV is consumed by 
-        #  - the openedx LMS/CMS/Workder docker image, to determine the environment in which the image is running.
-        #    (implemented below)
-        #
-        #  - the openedx MFE component @stepwisemath/frontend-component-header,
-        #    to determine the AWS S3 bucket from which to serve custom css at run time.
-        #    see https://github.com/StepwiseMath/frontend-component-header/blob/open-release/redwood.master/src/learning-header/LearningHeader.jsx#L44
-        #    (implemented in https://github.com/StepwiseMath/tutor-indigo-stepwisemath)
-        (
-            "openedx-dockerfile-post-python-requirements",
-            """
-ENV STEPWISEMATH_ENV='{{ STEPWISEMATH_ENV }}'
-""",
-        ),
-    ])
-
-################# Initialization tasks
-hooks.Filters.CLI_DO_INIT_TASKS.add_items((
-     "lms",
-     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_en"),
-))
-hooks.Filters.CLI_DO_INIT_TASKS.add_items((
-     "lms",
-     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_mx"),
-))
 
 ################# Docker image management
 # To build an image with `tutor images build myimage`, add a Dockerfile to templates/stepwise_config/build/myimage and write:
@@ -109,3 +82,34 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
     ]
 )
 hooks.Filters.CONFIG_OVERRIDES.add_items(list(config["overrides"].items()))
+
+###############################################################################
+# StepwiseMath configuration
+###############################################################################
+hooks.Filters.ENV_PATCHES.add_items(
+    [
+        # STEPWISEMATH_ENV is consumed by 
+        #  - the openedx LMS/CMS/Workder docker image, to determine the environment in which the image is running.
+        #    (implemented below)
+        #
+        #  - the openedx MFE component @stepwisemath/frontend-component-header,
+        #    to determine the AWS S3 bucket from which to serve custom css at run time.
+        #    see https://github.com/StepwiseMath/frontend-component-header/blob/open-release/redwood.master/src/learning-header/LearningHeader.jsx#L44
+        #    (implemented in https://github.com/StepwiseMath/tutor-indigo-stepwisemath)
+        (
+            "openedx-dockerfile-post-python-requirements",
+            """
+ENV STEPWISEMATH_ENV='{{ STEPWISEMATH_ENV }}'
+""",
+        ),
+    ])
+
+################# Initialization tasks
+hooks.Filters.CLI_DO_INIT_TASKS.add_items((
+     "lms",
+     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_en"),
+))
+hooks.Filters.CLI_DO_INIT_TASKS.add_items((
+     "lms",
+     ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_mx"),
+))
