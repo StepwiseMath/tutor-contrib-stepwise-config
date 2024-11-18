@@ -14,11 +14,25 @@ This tutor plugin is used in the following Github Actions automated build workfl
 ## Installation
 
 ```bash
-    pip install git+https://github.com/myusername/tutor-contrib-stepwise-config
+    pip install git+pip install git+https://github.com/StepwiseMath/tutor-contrib-stepwise-config@open-release/redwood.master
+    tutor plugins enable stepwise_config
 ```
 
 ## Usage
 
+For openedx container
+
 ```bash
-    tutor plugins enable stepwise_config
+    tutor config save --set STEPWISEMATH_ENV=dev
+    tutor config save --append OPENEDX_EXTRA_PIP_REQUIREMENTS=git+https://github.com/QueriumCorp/swpwrxblock@open-release/redwood.master
+    tutor images build openedx
+```
+
+For openedx MFE container
+
+```bash
+    pip install git+https://github.com/StepwiseMath/tutor-indigo-stepwisemath@open-release/redwood.master
+    tutor config save --set STEPWISEMATH_ENV=dev
+    tutor config save --append OPENEDX_EXTRA_PIP_REQUIREMENTS=git+https://github.com/QueriumCorp/swpwrxblock@open-release/redwood.master
+    tutor images build openedx
 ```
