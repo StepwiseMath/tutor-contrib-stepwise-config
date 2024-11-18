@@ -44,11 +44,11 @@ ENV STEPWISEMATH_ENV='{{ STEPWISEMATH_ENV }}'
     ])
 
 ################# Initialization tasks
-hooks.Filters.COMMANDS_INIT.add_item((
+hooks.Filters.CLI_DO_INIT_TASKS.add_items((
      "lms",
      ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_en"),
 ))
-hooks.Filters.COMMANDS_INIT.add_item((
+hooks.Filters.CLI_DO_INIT_TASKS.add_items((
      "lms",
      ("stepwise_config", "tasks", "lms", "stepwise_plugin_configuration_mx"),
 ))
