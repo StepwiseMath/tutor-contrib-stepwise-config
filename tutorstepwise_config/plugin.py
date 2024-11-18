@@ -12,7 +12,7 @@ config = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
-        "STEPWISEMATH_ENV": "prod",
+        "ENV": "prod",
     },
     # Add here settings that don't have a reasonable default for all users. For
     # instance: passwords, secret keys, etc.
@@ -71,13 +71,13 @@ for path in glob(
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items(
     [
-        (f"STEPWISE_CONFIG_{key}", value)
+        (f"STEPWISEMATH_CONFIG_{key}", value)
         for key, value in config["defaults"].items()
     ]
 )
 hooks.Filters.CONFIG_UNIQUE.add_items(
     [
-        (f"STEPWISE_CONFIG_{key}", value)
+        (f"STEPWISEMATH_CONFIG_{key}", value)
         for key, value in config["unique"].items()
     ]
 )
@@ -99,7 +99,7 @@ hooks.Filters.ENV_PATCHES.add_items(
         (
             "openedx-dockerfile-minimal",
             """
-ENV STEPWISEMATH_ENV={{ STEPWISE_CONFIG_STEPWISEMATH_ENV }}
+ENV STEPWISEMATH_ENV={{ STEPWISEMATH_CONFIG_ENV }}
 """,
         ),
     ])
