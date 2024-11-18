@@ -97,7 +97,7 @@ hooks.Filters.ENV_PATCHES.add_items(
         #    see https://github.com/StepwiseMath/frontend-component-header/blob/open-release/redwood.master/src/learning-header/LearningHeader.jsx#L44
         #    (implemented in https://github.com/StepwiseMath/tutor-indigo-stepwisemath)
         (
-            "openedx-dockerfile-post-python-requirements",
+            "openedx-dockerfile-minimal",
             """
 ENV STEPWISEMATH_ENV='{{ STEPWISE_CONFIG_STEPWISEMATH_ENV }}'
 """,
